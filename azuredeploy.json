@@ -25,7 +25,7 @@
   "variables": {},
   "resources": [
     {
-      "name": "[parameters('jobId')]",
+      "name": "[concat(parameters('accountName'), '/', parameters('jobId'))]",
       "type": "Microsoft.Automation/automationAccounts/Compilationjobs",
       "apiVersion": "2015-01-01-preview",
       "location": "parameters('accountLocation')]",
