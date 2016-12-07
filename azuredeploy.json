@@ -31,7 +31,6 @@
       "location": "parameters('accountLocation')]",
       "tags": {},
       "dependsOn": [
-        "[parameters('configurationName')]"
       ],
       "properties": {
         "configuration": {
