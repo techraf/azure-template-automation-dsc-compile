@@ -1,0 +1,44 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0",
+  "parameters": {
+    "accountName": {
+      "type": "string"
+    },
+    "accountLocation": {
+      "type": "string"
+    },
+    "configurationName": {
+      "type": "string",
+      "defaultValue": "myTimezone",
+      "metadata": {
+        "description": "The name of the DSC Configuration. The name must match the name in the URI."
+      }
+    },
+    "jobId": {
+      "type": "string",
+      "metadata": {
+        "description": "the job id to compile the configuration"
+      }
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "name": "[parameters('jobId')]",
+      "type": "Microsoft.Automation/automationAccounts/Compilationjobs",
+      "apiVersion": "2015-01-01-preview",
+      "location": "parameters('accountLocation')]",
+      "tags": {},
+      "dependsOn": [
+        "[parameters('configurationName')]"
+      ],
+      "properties": {
+        "configuration": {
+          "name": "[parameters('configurationName')]"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
